@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
     import { user } from "$lib/stores";
     import { supabase } from "$lib/supabaseClient";
     import Form from '../Form.svelte'
@@ -18,6 +19,7 @@
             if(data.user != null) {
                 $user = data.user
             }
+            goto("/")
         } catch (error) {
             if (error instanceof Error) {
                 alert(error.message);
