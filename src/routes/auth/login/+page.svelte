@@ -4,8 +4,6 @@
     import { supabase } from "$lib/supabaseClient";
     import Form from '../Form.svelte'
 
-    console.log($user)
-
     let loading = false;
     let email = "";
     let password = "";
@@ -15,7 +13,6 @@
             loading = true
             let {data, error} = await supabase.auth.signInWithPassword({email: email, password: password})
             if(error) throw error
-            console.log(data)
             if(data.user != null) {
                 $user = data.user
             }
